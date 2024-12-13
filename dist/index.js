@@ -18,11 +18,12 @@ const client_1 = require("@prisma/client");
 const prisma = new client_1.PrismaClient();
 const app = (0, express_1.default)();
 app.use(express_1.default.json());
-console.log(process.env.TOKEN);
+const port = process.env.PORT || 3000;
 app.get("/", (req, res) => {
     res.send("Hello World!");
 });
 app.post("/addtocart", (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    console.log(req.body);
     const { productId, city, region, postal, country } = req.body;
     if (!productId || !city || !region || !postal || !country) {
         res.status(400).send("Missing required fields");
@@ -44,6 +45,6 @@ app.post("/addtocart", (req, res) => __awaiter(void 0, void 0, void 0, function*
         res.status(500).send("Internal Server Error");
     }
 }));
-app.listen(3000, () => {
+app.listen(port, () => {
     console.log(`Example app listening on port 3000`);
 });
