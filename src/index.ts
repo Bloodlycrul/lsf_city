@@ -13,6 +13,7 @@ app.get("/", (req, res) => {
 });
 
 app.post("/addtocart", async (req, res) => {
+  console.log(req.body);
   const { productId, city, region, postal, country } = req.body;
 
   if (!productId || !city || !region || !postal || !country) {
