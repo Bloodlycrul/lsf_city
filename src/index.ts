@@ -5,8 +5,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 const app = express();
 app.use(express.json());
-
-console.log(process.env.TOKEN);
+const port = process.env.PORT || 3000;
 
 app.get("/", (req, res) => {
   res.send("Hello World!");
@@ -38,6 +37,6 @@ app.post("/addtocart", async (req, res) => {
   }
 });
 
-app.listen(3000, () => {
+app.listen(port, () => {
   console.log(`Example app listening on port 3000`);
 });
